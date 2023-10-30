@@ -1,0 +1,16 @@
+{
+    "ide.mavenDefaultGoals": [
+
+        "clean install -Dmaven.test.skip=true",
+        "clean install"
+    ],
+    "rest-client.defaultHeaders": {
+
+        "User-Agent": "vscode-restclient"
+    },
+    "thunder-client.certificates": [
+
+    ],
+    
+    
+}
