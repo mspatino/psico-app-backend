@@ -6,14 +6,18 @@ const express = require('express');
 //import express from 'express'
 
 
- require('dotenv').config();
+require('dotenv').config();
 //require('dotenv').config({ path: './config.env'}); 
+const { dbConnection } = require('./database/config');
 
 console.log(process.env);
 console.log(process.env.PORT);
 
 // crear el servidor de express
  const app = express();
+
+//base de datos
+dbConnection();
 
  // * Directorio Publico
 //!use (middleware) es una funcion que se ejecuta cuando se hace una peticion a mi servidor
