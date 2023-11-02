@@ -11,7 +11,8 @@ const router = Router();
 
 const { crearUsuario, loginUsuario, revalidarToken } = require('../controllers/auth');
 const { validarCampos } = require('../middlewares/validar-campos');
- 
+const { validarJWT } = require('../middlewares/validar-jwt');
+
 // router.post('/new', (req , res) => {
   
 //     res.json({
@@ -37,6 +38,9 @@ const { validarCampos } = require('../middlewares/validar-campos');
  ]
  ,loginUsuario);
 
- router.get('/renew', revalidarToken);
+ //* en todas las rutas de mi aplicacion, que el usuario necesite estar 
+ //autenticado; nwcwaito saber si el JWT es valido ( que no halla sido modificado y que no este expirado)
+ // va a tomar el jwt,va a hacer un procedimiento y va a regresar un nuevo jwt.
+ router.get('/renew',validarJWT , revalidarToken);
 
  module.exports = router;

@@ -8,6 +8,7 @@ const express = require('express');
 
 require('dotenv').config();
 //require('dotenv').config({ path: './config.env'}); 
+const cors = require('cors');
 const { dbConnection } = require('./database/config');
 
 console.log(process.env);
@@ -18,6 +19,9 @@ console.log(process.env.PORT);
 
 //base de datos
 dbConnection();
+
+//CORS
+app.use(cors());
 
  // * Directorio Publico
 //!use (middleware) es una funcion que se ejecuta cuando se hace una peticion a mi servidor
@@ -39,7 +43,7 @@ app.use(express.json());
 //  app.listen(4000, () => {
 //     console.log(`Servidor corriendo en puerto ${4000}`);
 //  });
-
+ app.use('/api/events',require('./routes/events'));
  app.listen(process.env.PORT, () => {
     console.log(`Servidor corriendo en puerto ${process.env.PORT}`);
  });
